@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cron from 'cron'
 
 import CovidDataRetriever from './CovidDataRetriever'
+import { to } from './utils'
 
 const PORT: string = process.env.PORT || '3000'
 const TIMEZONE: string = process.env.TIMEZONE || 'Europe/Madrid'
@@ -13,12 +14,13 @@ const app = express()
 
 const covidDataRetriever: CovidDataRetriever = new CovidDataRetriever()
 
-const retrieveCovidData = async () => {
-  const data = await covidDataRetriever.getSummary()
+const executeJob = async () => {
+  const [err, data] = await to(covidDataRetriever.getSummary())
+  err && process.exit(1)
   console.log(data)
 }
 
-const job = new cron.CronJob(CRON_PATTERN, retrieveCovidData, null, true, TIMEZONE)
+const job = new cron.CronJob(CRON_PATTERN, executeJob, null, true, TIMEZONE)
 
 app.listen(PORT, () => {
   job.start()
