@@ -1,0 +1,25 @@
+{
+  "name": "slack-covid19-status",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gusbueno/slack-covid19-status.git",
+  "author": "Gustavo Bueno <gustavo.bueno89@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon ./src/index.ts",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/node": "^13.9.2",
+    "nodemon": "^2.0.2",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.7.0",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
