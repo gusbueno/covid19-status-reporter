@@ -17,7 +17,6 @@ const covidDataRetriever: CovidDataRetriever = new CovidDataRetriever()
 const executeJob = async () => {
   const [err, data] = await to(covidDataRetriever.getSummary())
   err && process.exit(1)
-  console.log(data)
 }
 
 const job = new cron.CronJob(CRON_PATTERN, executeJob, null, true, TIMEZONE)
