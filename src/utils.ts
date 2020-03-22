@@ -203,13 +203,12 @@ export const dateFormatted = (): string => {
   return `${year}-${month}-${day}`
 }
 
-export const formatMessage = (data: Array<ICountryStatus>): string => {
+export const formatMessageCountries = (data: Array<ICountryStatus>): string => {
   let messageFormatted: string = ''
   data.forEach((country: ICountryStatus, index: number) => {
     messageFormatted += `
 ${index+1}. Country: *${country.Country}* :${EMOJI_FLAGS_MAP[country.Country] ? EMOJI_FLAGS_MAP[country.Country] : 'question'}:
-  - Total confirmed: *${country.TotalConfirmed}*
-    `
+  - Total confirmed: *${country.TotalConfirmed}*`
   })
   return messageFormatted
 }

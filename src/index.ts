@@ -6,7 +6,7 @@ dotenv.config() // load it before import classes
 
 import CovidDataRetriever from './CovidDataRetriever'
 import SlackManager from './SlackManager'
-import { to, formatMessage } from './utils'
+import { to, formatMessageCountries, dateFormatted } from './utils'
 
 
 
@@ -22,10 +22,13 @@ const slackManager: SlackManager = new SlackManager(SLACK_API_TOKEN, SLACK_CHANN
 
 const executeJob = async () => {
   const [err, data] = await to(covidDataRetriever.getSummary(10))
-  err && process.exit(1)
+  err && console.log(err)
 
-
-  slackManager.sendMessage(formatMessage(data))
+  if (data) {
+    const title: string = `*Covid-19 Report [${dateFormatted()}]: TOP 10 countries*`
+    const message: string = formatMessageCountries(data)
+    slackManager.sendMessage(title, message)
+  }
 }
 
 const job = new cron.CronJob(CRON_PATTERN, executeJob, null, true, TIMEZONE)

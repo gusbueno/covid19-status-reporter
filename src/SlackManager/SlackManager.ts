@@ -1,6 +1,6 @@
 import { WebClient } from '@slack/web-api'
 
-import { to, dateFormatted } from '../utils'
+import { to } from '../utils'
 
 class SlackManager {
   private slack: WebClient
@@ -11,7 +11,7 @@ class SlackManager {
     this.channel = channel
   }
 
-  async sendMessage(message: any) {
+  async sendMessage(title: string, message: string) {
     const [err, response] = await to(this.slack.chat.postMessage({
       channel: this.channel,
       text: 'Covid-19 report',
@@ -20,7 +20,7 @@ class SlackManager {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `*Covid-19 Report [${dateFormatted()}]: TOP 10 countries*`
+            text: title
           }
         },
         {
@@ -33,7 +33,7 @@ class SlackManager {
       ],
       username: 'Covid19Reporter'
     }))
-    err && process.exit(1)
+    err && console.log(err)
     response && console.log('Message sent successfully!')
   }
 }

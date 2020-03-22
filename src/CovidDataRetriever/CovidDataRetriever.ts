@@ -14,8 +14,8 @@ class CodivDataRetriever {
     return new Promise((resolve, reject) => {
       https.get(`${this.host}/summary`, res => {
         if (res.statusCode !== 200) {
+          console.log(`error with status code: ${res.statusCode}`)
           reject()
-          process.exit(1)
         }
   
         let rawData = ''
