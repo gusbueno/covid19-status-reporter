@@ -1,8 +1,10 @@
 export interface ICountryStatus {
   Country: string,
+  NewConfirmed: number,
   TotalConfirmed: number,
   NewDeaths: number,
   TotalDeaths: number,
+  NewRecovered: number,
   TotalRecovered: number
 }
 
@@ -12,8 +14,10 @@ export interface ISummaryResponse {
 }
 
 export enum CountrySortByPropAllowed {
+  NewConfirmed = 'NewConfirmed',
   TotalConfirmed = 'TotalConfirmed',
   NewDeaths = 'NewDeaths',
   TotalDeaths = 'TotalDeaths',
+  NewRecovered = 'NewRecovered',
   TotalRecovered = 'TotalRecovered'
 }

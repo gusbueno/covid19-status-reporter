@@ -1,7 +1,7 @@
 import https from 'https'
 
-import { sortCountriesBy } from './utils'
-import { ISummaryResponse, ICountryStatus, CountrySortByPropAllowed } from './types'
+import { sortCountriesBy } from '../utils'
+import { ISummaryResponse, ICountryStatus, CountrySortByPropAllowed } from '../types'
 
 class CodivDataRetriever {
   private host: string
@@ -10,7 +10,7 @@ class CodivDataRetriever {
     this.host = 'https://api.covid19api.com'
   }
 
-  getSummary(): Promise<any> {
+  getSummary(topN?: number): Promise<any> {
     return new Promise((resolve, reject) => {
       https.get(`${this.host}/summary`, res => {
         if (res.statusCode !== 200) {
@@ -26,7 +26,7 @@ class CodivDataRetriever {
         res.on('end', () => {
           const parsedData: ISummaryResponse = JSON.parse(rawData)
           const countriesSorted: Array<ICountryStatus> = sortCountriesBy(parsedData.Countries, CountrySortByPropAllowed.TotalConfirmed)
-          resolve(countriesSorted)
+          resolve(countriesSorted.slice(0, topN ? topN : countriesSorted.length))
         })
       })
       .on('error', err => {
