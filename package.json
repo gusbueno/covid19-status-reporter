@@ -1,8 +1,8 @@
 {
-  "name": "slack-covid19-status",
+  "name": "covid19-status-reporter",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/gusbueno/slack-covid19-status.git",
+  "repository": "https://github.com/gusbueno/covid19-status-reporter.git",
   "author": "Gustavo Bueno <gustavo.bueno89@gmail.com>",
   "license": "MIT",
   "scripts": {
