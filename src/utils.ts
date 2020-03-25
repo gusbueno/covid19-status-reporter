@@ -208,12 +208,9 @@ export const formatMessageCountries = (data: Array<ICountryStatus>): string => {
   data.forEach((country: ICountryStatus, index: number) => {
     messageFormatted += `
 ${index+1}. Country: *${country.Country}* :${EMOJI_FLAGS_MAP[country.Country] ? EMOJI_FLAGS_MAP[country.Country] : 'question'}:
-  - Total confirmed: *${country.TotalConfirmed}*
-  - New confirmed: *${country.NewConfirmed}*
-  - Total deaths: *${country.TotalDeaths}*
-  - New deaths: *${country.NewDeaths}*
-  - Total recovered: *${country.TotalRecovered}*
-  - New recovered: *${country.NewRecovered}*
+  - Total confirmed: *${country.TotalConfirmed}* (+${country.NewConfirmed})
+  - Total deaths: *${country.TotalDeaths}* (+${country.NewDeaths})
+  - Total recovered: *${country.TotalRecovered}* (+${country.NewRecovered})
   `
   })
   return messageFormatted
