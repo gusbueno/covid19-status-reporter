@@ -1,0 +1,16 @@
+{
+  "<CHANEL_ID>": {
+    "type": "TOP10_COUNTRIES"
+  },
+  "<USER_ID>": {
+    "type": "CUSTOM_COUNTRIES",
+    "countries": [
+      "Ukraine",
+      "Spain",
+      "Netherlands",
+      "Israel",
+      "US",
+      "Russia"
+    ]
+  }
+}
