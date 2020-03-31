@@ -18,7 +18,8 @@ const SLACK_CHANNEL: string = process.env.SLACK_CHANNEL || ''
 
 const app = express()
 const covidDataRetriever: CovidDataRetriever = new CovidDataRetriever()
-const slackManager: SlackManager = new SlackManager(SLACK_API_TOKEN, SLACK_CHANNEL)
+const slackManager: SlackManager = new SlackManager(SLACK_API_TOKEN)
+const receiverList: Array<string> = SLACK_CHANNEL.split(',')
 
 const executeJob = async () => {
   const [err, data] = await to(covidDataRetriever.getSummary(10))
@@ -27,7 +28,10 @@ const executeJob = async () => {
   if (data) {
     const title: string = `*Covid-19 Report [${dateFormatted()}]: TOP 10 countries*`
     const message: string = formatMessageCountries(data)
-    slackManager.sendMessage(title, message)
+    receiverList.forEach((receiver: string) => {
+      slackManager.sendMessage(title, message, receiver)
+    })
+    
   }
 }
 

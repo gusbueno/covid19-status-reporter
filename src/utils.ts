@@ -177,10 +177,18 @@ const EMOJI_FLAGS_MAP = {
   'The Gambia': 'flag-'
 }
 
+const REPEATED_COUNTRIES = [
+  'Iran (Islamic Republic of)'
+]
+
 export const to = (promise: Promise<any>): Promise<Array<any>> => {
   return promise.then((data: any): Array<any> => {
     return [null, data]
   }).catch((err: object): Array<any> => [err])
+}
+
+export const removeRepeatedCountries = (countries: Array<ICountryStatus>): Array<ICountryStatus> => {
+  return countries.filter((country: ICountryStatus) => !REPEATED_COUNTRIES.includes(country.Country))
 }
 
 export const sortCountriesBy = (countries: Array<ICountryStatus>, property: CountrySortByPropAllowed): Array<ICountryStatus> => {

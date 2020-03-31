@@ -1,6 +1,6 @@
 import https from 'https'
 
-import { sortCountriesBy } from '../utils'
+import { sortCountriesBy, removeRepeatedCountries } from '../utils'
 import { ISummaryResponse, ICountryStatus, CountrySortByPropAllowed } from '../types'
 
 class CodivDataRetriever {
@@ -25,7 +25,8 @@ class CodivDataRetriever {
   
         res.on('end', () => {
           const parsedData: ISummaryResponse = JSON.parse(rawData)
-          const countriesSorted: Array<ICountryStatus> = sortCountriesBy(parsedData.Countries, CountrySortByPropAllowed.TotalConfirmed)
+          const uniqueCountries: Array<ICountryStatus> = removeRepeatedCountries(parsedData.Countries)
+          const countriesSorted: Array<ICountryStatus> = sortCountriesBy(uniqueCountries, CountrySortByPropAllowed.TotalConfirmed)
           resolve(countriesSorted.slice(0, topN ? topN : countriesSorted.length))
         })
       })
