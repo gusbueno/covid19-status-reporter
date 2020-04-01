@@ -43,7 +43,7 @@ export const EMOJI_FLAGS_MAP = {
   'Singapore': 'flag-',
   'Indonesia': 'flag-',
   'Ecuador': 'flag-',
-  'Turkey': 'flag-',
+  'Turkey': 'flag-tr',
   'Saudi Arabia': 'flag-',
   'Slovenia': 'flag-',
   'Thailand': 'flag-',
