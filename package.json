@@ -1,6 +1,6 @@
 {
   "name": "covid19-status-reporter",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "index.js",
   "repository": "https://github.com/gusbueno/covid19-status-reporter.git",
   "author": "Gustavo Bueno <gustavo.bueno89@gmail.com>",
