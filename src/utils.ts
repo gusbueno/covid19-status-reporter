@@ -1,14 +1,9 @@
 import { ICountryStatus, CountrySortByPropAllowed } from './types'
-import { EMOJI_FLAGS_MAP, REPEATED_COUNTRIES } from './constants'
 
 export const to = (promise: Promise<any>): Promise<Array<any>> => {
   return promise.then((data: any): Array<any> => {
     return [null, data]
   }).catch((err: object): Array<any> => [err])
-}
-
-export const removeRepeatedCountries = (countries: Array<ICountryStatus>): Array<ICountryStatus> => {
-  return countries.filter((country: ICountryStatus) => !REPEATED_COUNTRIES.includes(country.Country))
 }
 
 export const sortCountriesBy = (countries: Array<ICountryStatus>, property: CountrySortByPropAllowed): Array<ICountryStatus> => {
@@ -35,7 +30,7 @@ export const formatMessageCountries = (data: Array<ICountryStatus>): string => {
   let messageFormatted: string = ''
   data.forEach((country: ICountryStatus, index: number) => {
     messageFormatted += `
-${index+1}. Country: *${country.Country}* :${EMOJI_FLAGS_MAP[country.Country] ? EMOJI_FLAGS_MAP[country.Country] : 'question'}:
+${index+1}. Country: *${country.Country}* :flag-${country.CountryCode.toLowerCase()}:
   - Total confirmed: *${country.TotalConfirmed}* (+${country.NewConfirmed})
   - Total deaths: *${country.TotalDeaths}* (+${country.NewDeaths})
   - Total recovered: *${country.TotalRecovered}* (+${country.NewRecovered})
