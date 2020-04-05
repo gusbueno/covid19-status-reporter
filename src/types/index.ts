@@ -1,5 +1,6 @@
 export interface ICountryStatus {
   Country: string,
+  CountryCode: string,
   Slug: string,
   NewConfirmed: number,
   TotalConfirmed: number,
