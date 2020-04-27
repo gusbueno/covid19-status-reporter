@@ -22,7 +22,7 @@
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.2",
     "ts-loader": "^6.2.1",
-    "ts-node": "^8.7.0",
+    "ts-node": "^8.9.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
