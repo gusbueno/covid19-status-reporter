@@ -1,6 +1,6 @@
 {
   "name": "covid19-status-reporter",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "main": "index.js",
   "repository": "https://github.com/gusbueno/covid19-status-reporter.git",
   "author": "Gustavo Bueno <gustavo.bueno89@gmail.com>",
@@ -11,20 +11,20 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@slack/web-api": "^5.8.0",
+    "@slack/web-api": "^5.8.1",
     "cron": "^1.8.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/cron": "^1.7.2",
     "@types/express": "^4.17.3",
-    "@types/node": "^13.9.2",
+    "@types/node": "^13.13.5",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.2",
-    "ts-loader": "^6.2.1",
-    "ts-node": "^8.7.0",
+    "ts-loader": "^7.0.4",
+    "ts-node": "^8.10.1",
     "typescript": "^3.8.3",
-    "webpack": "^4.42.0",
+    "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-node-externals": "^1.7.2"
   }
